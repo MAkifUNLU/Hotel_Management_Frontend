@@ -1,14 +1,20 @@
-import { Pressable, StyleSheet } from "react-native";
+import { FlatList, Pressable,  StyleSheet } from "react-native";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 
-import EditScreenInfo from "@/components/EditScreenInfo";
 import { Text, View } from "@/components/Themed";
+
+// Style lari disari cikartmamiz lazim
+// Biraz daha toparlayalim
+// HomepageButton olusturalim component
+
 
 export default function TabOneScreen() {
   return (
     <View style={styles.container}>
       <View
         style={{
-          flex: 1,
+          flex: 2,
           alignSelf: "stretch",
           padding: 10,
           margin: 20,
@@ -46,28 +52,60 @@ export default function TabOneScreen() {
       </View>
 
       <View
-        style={{
-          flex: 1,
-          alignSelf: "stretch",
-          padding: 10,
-          margin: 20,
-          backgroundColor: "lightblue",
-          borderRadius: 10,
-        }}
-      >
-        <Text
-          style={{
-            margin: "auto",
-            fontSize: 20,
-            fontWeight: "bold",
-            color: "black",
-          }}
-        >
-          Breakfast is ready!
-        </Text>
-      </View>
+        style={styles.separator}
+        lightColor="#eee"
+        darkColor="rgba(255,255,255,0.1)"
+      />
 
-      <View style={{ flex: 1, alignSelf: "stretch", rowGap: 20 }}>
+      <FlatList
+        horizontal
+        style={{ flex: 1 }}
+        data={[
+          {
+            title: "Breakfast is ready!",
+          },
+          {
+            title: "Tonights food menu",
+          },
+          {
+            title: "Pool is open",
+          },
+        ]}
+        showsHorizontalScrollIndicator={false}
+        renderItem={({ item }) => {
+          return (
+            <View
+              style={{
+                flex: 1,
+                alignSelf: "stretch",
+                padding: 10,
+                margin: 20,
+                backgroundColor: "lightblue",
+                borderRadius: 10,
+              }}
+            >
+              <Text
+                style={{
+                  margin: "auto",
+                  fontSize: 20,
+                  fontWeight: "bold",
+                  color: "black",
+                }}
+              >
+                {item.title}
+              </Text>
+            </View>
+          );
+        }}
+      />
+
+      <View
+        style={styles.separator}
+        lightColor="#eee"
+        darkColor="rgba(255,255,255,0.1)"
+      />
+
+      <View style={{ flex: 2, alignSelf: "stretch", rowGap: 20 }}>
         <View
           style={{
             flexDirection: "row",
@@ -78,10 +116,12 @@ export default function TabOneScreen() {
           <Pressable
             style={{
               padding: 10,
-              backgroundColor: "gray",
+              backgroundColor: "lightgray",
               borderRadius: 10,
+              alignItems: "center",
             }}
           >
+            <Ionicons name="accessibility" size={24} color="black" />
             <Text
               style={{
                 fontSize: 14,
@@ -95,10 +135,12 @@ export default function TabOneScreen() {
           <Pressable
             style={{
               padding: 10,
-              backgroundColor: "gray",
+              backgroundColor: "lightgray",
               borderRadius: 10,
+              alignItems: "center",
             }}
           >
+            <Ionicons name="receipt" size={24} color="black" />
             <Text
               style={{
                 fontSize: 14,
@@ -111,10 +153,12 @@ export default function TabOneScreen() {
           <Pressable
             style={{
               padding: 10,
-              backgroundColor: "gray",
+              backgroundColor: "lightgray",
               borderRadius: 10,
+              alignItems: "center",
             }}
           >
+            <Ionicons name="fast-food" size={24} color="black" />
             <Text
               style={{
                 fontSize: 14,
@@ -136,10 +180,12 @@ export default function TabOneScreen() {
           <Pressable
             style={{
               padding: 10,
-              backgroundColor: "gray",
+              backgroundColor: "lightgray",
               borderRadius: 10,
+              alignItems: "center",
             }}
           >
+            <FontAwesome5 name="taxi" size={24} color="black" />
             <Text
               style={{
                 fontSize: 14,
@@ -153,10 +199,12 @@ export default function TabOneScreen() {
           <Pressable
             style={{
               padding: 10,
-              backgroundColor: "gray",
+              backgroundColor: "lightgray",
               borderRadius: 10,
+              alignItems: "center",
             }}
           >
+            <FontAwesome5 name="screwdriver" size={24} color="black" />
             <Text
               style={{
                 fontSize: 14,
@@ -169,10 +217,12 @@ export default function TabOneScreen() {
           <Pressable
             style={{
               padding: 10,
-              backgroundColor: "gray",
+              backgroundColor: "lightgray",
               borderRadius: 10,
+              alignItems: "center",
             }}
           >
+            <FontAwesome5 name="toolbox" size={24} color="black" />
             <Text
               style={{
                 fontSize: 14,
@@ -184,14 +234,6 @@ export default function TabOneScreen() {
           </Pressable>
         </View>
       </View>
-
-      <Text style={styles.title}>Tab One</Text>
-      <View
-        style={styles.separator}
-        lightColor="#eee"
-        darkColor="rgba(255,255,255,0.1)"
-      />
-      <EditScreenInfo path="app/(tabs)/index.tsx" />
     </View>
   );
 }
@@ -207,7 +249,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   separator: {
-    marginVertical: 30,
+    marginVertical: 10,
     height: 1,
     width: "80%",
   },
