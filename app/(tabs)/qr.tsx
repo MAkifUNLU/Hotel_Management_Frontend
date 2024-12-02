@@ -1,6 +1,10 @@
 import { CameraView, useCameraPermissions } from "expo-camera";
 import { Button, StyleSheet, Text, View } from "react-native";
 
+// Loader (activitty indicator) ekleyelim
+// style lari cikartalim ayri objelere
+
+
 export default function App() {
   const [permission, requestPermission] = useCameraPermissions();
 
